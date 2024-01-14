@@ -3,7 +3,7 @@ import { platform } from 'os';
 
 const UI_URL = 'http://localhost:5173/' // frontend 
 
-test('should allow the user to sign in', async ({ page }) => {
+test('проверка логина на сайт', async ({ page }) => {
   await page.goto(UI_URL)
 
   // get sign in button, тоесть производится поиск по странице элемента указанный в коде
@@ -12,8 +12,8 @@ test('should allow the user to sign in', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Sign in' })).toBeVisible();
 
   // Заполнение данных в поля при входе
-  await page.locator('[name=email]').fill('1@1.com');
-  await page.locator('[name=password]').fill('password123');
+  await page.locator('[name=email]').fill('admin@admin.com');
+  await page.locator('[name=password]').fill('admin!');
 
   await page.getByRole("button", { name: "Log in" }).click();
   // Проверка всплываещего toast(увдеомление о регистрации), проверка наличия в хедере элементов My Bookings ...
@@ -25,7 +25,7 @@ test('should allow the user to sign in', async ({ page }) => {
 
 
 // Проверка компонентов регистрации
-test('should allow user to register', async({page}) => {
+test('проверка регистрации', async({page}) => {
   const testEmail = `test_register_${Math.floor(Math.random()* 90000) + 10000}@test.com` // генератор тест почты
   await page.goto(UI_URL);
 

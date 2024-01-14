@@ -1,7 +1,8 @@
 import express, { Request, Response } from 'express';
 import multer from 'multer'
 import cloudinary from 'cloudinary'
-import Hotel, { HotelType } from '../models/hotel';
+import Hotel from '../models/hotel';
+import  { HotelType } from '../shared/types'
 import verifiyToken from '../middleware/auth';
 import { body } from 'express-validator';
 
@@ -46,7 +47,7 @@ router.post('/',
         newHotel.imageUrls = imageUrls;
         newHotel.lastUpdated = new Date();
         newHotel.userId = req.userId;
-        
+
         const hotel = new Hotel(newHotel);
         await hotel.save();
 
@@ -54,6 +55,15 @@ router.post('/',
     }catch(e) {
         console.log('Error creating hotel: ', e);
         res.status(500).json({ message: 'Internal server error' });
+    }
+})
+
+router.get('/', verifiyToken, async(req: Request, res: Response)=> {
+    try {
+        const hotels = await Hotel.find({userId: req.userId});
+        res.json(hotels);    
+    } catch(error) {
+        res.status(500).json({message: 'Error fetch hotels'})
     }
 })
 

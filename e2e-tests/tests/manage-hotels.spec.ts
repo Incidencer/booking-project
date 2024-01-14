@@ -12,15 +12,15 @@ test.beforeEach(async({ page })=> {
     await expect(page.getByRole('heading', { name: 'Sign in' })).toBeVisible();
   
     // Заполнение данных в поля при входе
-    await page.locator('[name=email]').fill('1@1.com');
-    await page.locator('[name=password]').fill('password123');
+    await page.locator('[name=email]').fill('admin@admin.com');
+    await page.locator('[name=password]').fill('admin!');
   
     await page.getByRole("button", { name: "Log in" }).click();
     // Проверка всплываещего toast(увдеомление о регистрации), проверка наличия в хедере элементов My Bookings ...
     await expect(page.getByText('Sign-in Successful')).toBeVisible();
 })
 
-test('user add hotel', async({page})=>{
+test('проверка добавления отеля', async({page})=>{
     await page.goto(`${UI_URL}add-hotel`)
 
     await page.locator('[name=name]').fill('Test Hotel')
@@ -40,4 +40,19 @@ test('user add hotel', async({page})=>{
 
     await page.getByRole('button', { name: 'Save' }).click()
     await expect(page.getByText('Hotel Saved')).toBeVisible()
+})
+
+test('проверка наличия отелей', async ({page})=> {
+    await page.goto(`${UI_URL}my-hotels`)
+
+    await expect(page.getByText('Hotel in Hell')).toBeVisible()
+    await expect(page.getByText("Lorem ipsum dolor sit amet")).toBeVisible()
+    await expect(page.getByText('Hell, Hellish')).toBeVisible()
+    await expect(page.getByText('Budget')).toBeVisible()
+    await expect(page.getByText('£666 per night')).toBeVisible()
+    await expect(page.getByText('1 adults, 1 children')).toBeVisible()
+    await expect(page.getByText('5 Star Rating')).toBeVisible()
+
+    await expect(page.getByRole('link', { name: 'View more details' })).toBeVisible()
+    await expect(page.getByRole('link', { name: 'Add Hotel' })).toBeVisible()
 })

@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import SignIn from "./pages/SignIn";
 import HotelsAdd from "./pages/HotelsAdd";
 import { useAppContext } from "./context/AppContext";
+import MyHotels from "./pages/MyHotels";
 
 
 const App = () => {
@@ -46,6 +47,12 @@ const App = () => {
           </Layout>
         }
         />
+        <Route path='/my-hotels'
+        element = {
+          <Layout>
+            <MyHotels/>
+          </Layout>
+        }/>
         </>)}
         <Route path='*' element={<Navigate to='/'/>}/>
       </Routes>
