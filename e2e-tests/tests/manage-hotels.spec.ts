@@ -56,3 +56,22 @@ test('проверка наличия отелей', async ({page})=> {
     await expect(page.getByRole('link', { name: 'View more details' })).toBeVisible()
     await expect(page.getByRole('link', { name: 'Add Hotel' })).toBeVisible()
 })
+
+test('проверка редактирования отеля', async({page}) => {
+    await page.goto(`${UI_URL}my-hotels`)
+
+    await page.getByRole('link', {name: 'View more details'}).click()
+
+    await page.waitForSelector('[name="name"]', {state: 'attached'})
+    await expect(page.locator('[name="name"]')).toHaveValue('Hotel in Hell')
+    await page.locator('[name="name"]').fill('Hotel in Hell1')
+    await page.getByRole('button', {name: 'Save'}).click()
+    await expect(page.getByText('Hotel Saved')).toBeVisible();
+
+    page.reload();
+
+    await expect(page.locator('[name="name"]')).toHaveValue('Hotel in Hell1')
+    await page.locator('[name="name"]').fill('Hotel on Hell')
+    await page.getByRole('button', {name: 'Save'}).click()
+    await expect(page.getByText('Hotel Saved')).toBeVisible();
+})

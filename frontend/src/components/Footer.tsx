@@ -8,7 +8,8 @@ const Footer = () => {
             </span>
             <span className="text-white font-bold tracking-tight flex gap-4">
                 <p className="cursor-pointer">Privacy Policy</p>
-                <p className="cursor-pointer">Privacy Policy</p>
+                <p className="cursor-pointer" >Terms of service</p>
+                <p className="cursor-pointer before:color-red" >About us</p>
             </span>
         </div>
     </div>
