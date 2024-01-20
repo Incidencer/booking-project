@@ -1,4 +1,4 @@
-import { hotelTypes } from "../config/hotel-options-config";
+import { hotelFacilities } from "../config/hotel-options-config";
 
 type Props = {
     selectedFacilities: string[];
@@ -11,7 +11,7 @@ const FacilitiesFilter = ({selectedFacilities, onChange}: Props) => {
             <h4 className="text-md font-semibold mb-2">
                 Facilities
             </h4>
-            {hotelTypes.map((facility)=> (
+            {hotelFacilities.map((facility)=> (
                 <label className="flex items-center space-x-2">
                     <input type="checkbox" className="rounded" 
                     value={facility} 
