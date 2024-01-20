@@ -23,7 +23,7 @@ const MyHotels = () => {
         </span>
         <div className="grid grid-cols-1 gap-8">
             {hotelData.map((hotel)=>(
-                <div className="flex flex-col justify-between border border-slate-300 rounded-lg p-8">
+                <div data-testid="hotel-card" className="flex flex-col justify-between border border-slate-300 rounded-lg p-8">
                     <h2 className="text-2xl font-bold">{hotel.name}</h2>
                     <div className="whitespace-pre-line">{hotel.description}</div>
                     <div className="grid p-2 grid-cols-5 gap-2">
