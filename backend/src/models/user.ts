@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     lastName: {type: String, required: true},
 });
 
-// Crypt password, привращение пароля в хэш
+// Crypt password, password -> HASH
 
 userSchema.pre('save', async function(next) {
     if(this.isModified('password')) {

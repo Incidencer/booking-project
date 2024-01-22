@@ -29,3 +29,15 @@ test("Результат поиска отеля, работа поиска", as
     await expect(page.getByText("testSearch")).toBeVisible()
 }
 )
+
+test("show should hotel details in SEARCH", async({page})=> {
+    await page.goto(UI_URL);
+
+    await page.getByPlaceholder("Where are you going?").fill("testSearch")
+    await page.getByRole("button", {name: "Search"}).click()
+
+    await page.getByText("testSearch")
+
+    await expect(page).toHaveURL(/detail/);
+    await expect(page.getByRole("button", {name: "Book now"})).toBeVisible();
+})
