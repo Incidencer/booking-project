@@ -24,6 +24,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </SearchContextProvider>
     </AppContextProvider>
     </QueryClientProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
   </div>
 )

@@ -57,7 +57,7 @@ router.get('/validate-token', verifiyToken, (req: Request, res: Response) => {
 // logout
 router.post('/logout', (req: Request, res: Response) => {
     res.cookie('auth_token', '', {
-        expires: new Date(0) // время сколько будет действовать token
+        expires: new Date(0)
     });
     res.send();
 })

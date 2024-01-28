@@ -8,9 +8,10 @@ const Footer = () => {
               <Link to ='/'>BookingHotels89.com</Link>
             </span>
             <span className="text-white font-bold tracking-tight flex gap-4">
-                <p className="cursor-pointer opacity-85 hover:opacity-100 hover:text-lg transition-transform transform hover:scale-110 ">Privacy Policy</p>
-                <p className="cursor-pointer opacity-85 hover:opacity-100 hover:text-lg transition-transform transform hover:scale-110" >Terms of service</p>
-                <p className="cursor-pointer opacity-85 hover:opacity-100 hover:text-lg transition-transform transform hover:scale-110" >About us</p>
+            <Link to="/privacy" className="cursor-pointer opacity-85 hover:opacity-100 hover:text-lg transition-transform transform hover:scale-110">Privacy Policty</Link>
+                  <Link to="/terms" className="cursor-pointer opacity-85 hover:opacity-100 hover:text-lg transition-transform transform hover:scale-110">Terms of service</Link>
+                <p className="cursor-pointer opacity-85 hover:opacity-100 hover:text-lg transition-transform transform hover:scale-110" ><a href="https://github.com/Incidencer">About us(its me)</a></p>
+                <p className="cursor-pointer opacity-85 hover:opacity-100 hover:text-lg transition-transform transform hover:scale-110" > <a href="https://youtu.be/dQw4w9WgXcQ?si=GF8SxesizoVrzphI">Dont press the button!</a></p>
             </span>
         </div>
     </div>

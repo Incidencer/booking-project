@@ -2,8 +2,26 @@ import express, {Request,Response} from 'express';
 import User from '../models/user'
 import jwt from 'jsonwebtoken'
 import {check, validationResult} from 'express-validator'
+import verifiyToken from '../middleware/auth';
 
 const router = express.Router();
+
+router.get("/me", verifiyToken, async (req: Request, res: Response) => {
+    const userId = req.userId;
+  
+    try {
+      const user = await User.findById(userId).select("-password");
+      if (!user) {
+        return res.status(400).json({ message: "User not found" });
+      }
+      res.json(user);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "something went wrong" });
+    }
+  });
+
+
 // REGISTER, MAIL STATUS | /api/users/register, при выполнении запроса check проверяет валидность всего UserType
 router.post('/register', [
     check('firstName', 'First Name is required').isString(),
